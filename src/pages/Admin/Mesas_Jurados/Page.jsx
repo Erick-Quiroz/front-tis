@@ -1,27 +1,26 @@
 import { useState, useEffect } from "react";
 import { Admin } from "../../../components/layout/admin/Admin";
-import { Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import { containerChartStyles } from "../Home/utils/HomeStyles";
-import Table_Conv from "../../../hooks/Table/Table_Conv";
-
-import ButtonProducts from "../../../hooks/utils/Button";
-
+import Table_User from "../../../hooks/Table/Table_User";
+// eslint-disable-next-line no-unused-vars
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 import Drawer from "../../../hooks/Drawer/Drawer";
-import { getApiConv } from "../../../api/api";
-
-import Form_Mesas_Jurados from "../../../hooks/Forms/Form_Mesas_Jurados";
-
+import { getApi } from "../../../api/api";
+// import Form_User from "../../../hooks/Forms/Form_User";
+import AddIcon from "@mui/icons-material/Add";
 const Page_Mesas_Jurados = () => {
-  const name = "Mesas y Jurados";
+  const name = "Eleccion";
 
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [convocatoria, setProduct] = useState({});
+  const [product, setProduct] = useState({});
   const [edit, setedit] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   useEffect(() => {
     getProduct();
   }, []);
-  const [radio, setradio] = useState(false);
+
   const openDrawer = () => {
     setDrawerOpen(true);
   };
@@ -33,23 +32,17 @@ const Page_Mesas_Jurados = () => {
     setedit(true);
   };
 
-  const editFalse = () => {
-    setedit(false);
-  };
-  const handleChange = () => {
-    setradio(!radio);
-  };
   async function getProduct() {
     try {
-      const productsData = await getApiConv("product");
+      const productsData = await getApi("product");
       setProduct(productsData);
       console.log(productsData);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
   }
-  const handleEdit = (convocatoria) => {
-    setSelectedProduct(convocatoria);
+  const handleEdit = (product) => {
+    setSelectedProduct(product);
   };
 
   return (
@@ -63,23 +56,37 @@ const Page_Mesas_Jurados = () => {
                 variant="h4"
                 sx={{ borderBottom: "2px solid black", width: "100%" }}
               >
-                {name}
+                Eleccion
               </Typography>
 
-              <ButtonProducts
-                handleChange={handleChange}
-                selectedProduct={selectedProduct}
-                openDrawer={openDrawer}
-                editFalse={editFalse}
-              />
+              <div>
+                <Grid
+                  container
+                  alignItems="center"
+                  justifyContent="space-between"
+                >
+                  <Grid item>
+                    <Link to="/admin/mesas-jurados/create">
+                      <Button
+                        variant="contained"
+                        color="success"
+                        endIcon={<AddIcon />}
+                        sx={{ borderRadius: 3, marginTop: 2, marginRight: 1 }}
+                      >
+                        Nuevo
+                      </Button>
+                    </Link>
+                  </Grid>
+                </Grid>
+              </div>
             </Grid>
           </Grid>
         </Grid>
         <Grid item xs={12} md={12} lg={12}>
           <Grid container style={containerChartStyles}>
             <Grid item xs={12}>
-              <Table_Conv
-                convocatoria={convocatoria}
+              <Table_User
+                products={product}
                 handleEdit={handleEdit}
                 openDrawer={openDrawer}
                 editTrue={editTrue}
@@ -89,7 +96,7 @@ const Page_Mesas_Jurados = () => {
           </Grid>
         </Grid>
       </Grid>
-      <div>
+      {/* <div>
         <Drawer
           isOpen={drawerOpen}
           onClose={closeDrawer}
@@ -98,7 +105,7 @@ const Page_Mesas_Jurados = () => {
           getProduct={getProduct}
           name={name}
           form={
-            <Form_Mesas_Jurados
+            <Form_User
               onClose={closeDrawer}
               selectedProduct={selectedProduct}
               edit={edit}
@@ -106,7 +113,7 @@ const Page_Mesas_Jurados = () => {
             />
           }
         />
-      </div>
+      </div> */}
     </Admin>
   );
 };

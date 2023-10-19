@@ -42,7 +42,6 @@ function Header() {
                 variant="h6"
                 noWrap
                 component="a"
-                href="#app-bar-with-responsive-menu"
                 sx={{
                   fontFamily: "monospace",
                   fontWeight: 700,

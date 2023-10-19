@@ -102,6 +102,7 @@ const NavBar = ({ open, mode }) => {
           icon={iconsList["Inicio"]}
           onClick={handleLinkClick}
         />
+
         <Divider />
 
         <Divider />

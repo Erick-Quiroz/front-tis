@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 // eslint-disable-next-line no-unused-vars
-import { styled } from "@mui/material/styles"; //Requerido
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 
 import CssBaseline from "@mui/material/CssBaseline";
