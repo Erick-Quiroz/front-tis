@@ -2,7 +2,7 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import { Container, Typography, TextField, Button, Paper } from "@mui/material";
 import { postApi } from "../api/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Client from "../components/layout/client/Client";
 
 const Login = () => {
@@ -80,6 +80,7 @@ const Login = () => {
                 onChange={handlePasswordChange}
                 required
               />
+              <Link to={"/admin"}>
               <Button
                 type="submit"
                 fullWidth
@@ -89,6 +90,7 @@ const Login = () => {
               >
                 Ingresar
               </Button>
+              </Link>
             </form>
           </Paper>
         </div>

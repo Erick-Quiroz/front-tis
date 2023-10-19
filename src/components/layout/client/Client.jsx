@@ -8,7 +8,10 @@ export const Client = ({ children }) => {
       <CssBaseline />
       <Header />
 
-      <Box component="main" sx={{ flexGrow: 1, p: 3, width: "80vw" }}>
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, p: 3, width: "80vw", padding: "0px" }}
+      >
         {children}
       </Box>
     </Box>

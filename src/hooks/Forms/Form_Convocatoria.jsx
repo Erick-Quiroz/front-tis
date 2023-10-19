@@ -29,11 +29,9 @@ import PlusOneRoundedIcon from "@mui/icons-material/PlusOneRounded";
 const facultades = [
   {
     name: "Facultad 1",
-    carreras: ["Carrera 1-1", "Carrera 1-2", "Carrera 1-3"],
   },
   {
     name: "Facultad 2",
-    carreras: ["Carrera 2-1", "Carrera 2-2", "Carrera 2-3"],
   },
   // Agrega más facultades y sus respectivas carreras aquí
 ];
@@ -44,16 +42,14 @@ const Form_Convocatoria = ({ onClose, edit }) => {
     dateB: null,
     dateE: null,
     facultad: "",
-    carrera: "",
+
     tipo: "",
     estado: "Activo",
   });
 
   const [requerimientos, setRequerimientos] = useState([]);
-
-  const [selectedFacultad, setSelectedFacultad] = useState("");
   // eslint-disable-next-line no-unused-vars
-  const [selectedCarrera, setSelectedCarrera] = useState("");
+  const [selectedFacultad, setSelectedFacultad] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -64,10 +60,6 @@ const Form_Convocatoria = ({ onClose, edit }) => {
 
     if (name === "facultad") {
       setSelectedFacultad(value);
-      setSelectedCarrera("");
-    }
-    if (name === "carrera") {
-      setSelectedCarrera(value);
     }
   };
 
@@ -95,7 +87,6 @@ const Form_Convocatoria = ({ onClose, edit }) => {
         dateB: formData.dateB,
         dateE: formData.dateE,
         facultad: formData.facultad,
-        carrera: formData.carrera,
         tipo: formData.tipo,
         requerimientos: requerimientos,
         estado: formData.estado,
@@ -229,32 +220,6 @@ const Form_Convocatoria = ({ onClose, edit }) => {
                     {facultad.name}
                   </MenuItem>
                 ))}
-              </Select>
-            </FormControl>
-          </Box>
-
-          <Box sx={{ mt: 2 }}>
-            <FormControl fullWidth variant="outlined">
-              <InputLabel htmlFor="carrera">Carrera</InputLabel>
-              <Select
-                required
-                label="Carrera"
-                name="carrera"
-                value={formData.carrera}
-                onChange={handleChange}
-                inputProps={{
-                  name: "carrera",
-                  id: "carrera",
-                }}
-              >
-                {selectedFacultad &&
-                  facultades
-                    .find((facultad) => facultad.name === selectedFacultad)
-                    .carreras.map((carrera) => (
-                      <MenuItem key={carrera} value={carrera}>
-                        {carrera}
-                      </MenuItem>
-                    ))}
               </Select>
             </FormControl>
           </Box>

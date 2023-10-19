@@ -16,6 +16,7 @@ import Page_Eleccion from "../pages/Admin/Eleccion/Page";
 import Create_Eleccion from "../pages/Admin/Eleccion/Sub/Create_Eleccion";
 import Page_elecc from "../pages/Admin/Elecc/Page";
 import Page_Frente from "../pages/Admin/Frente/Page";
+import Page_Mesas_Jurados from "../pages/Admin/Mesas_Jurados/Page";
 export const AppRouter = () => {
   const authToken = Cookies.get("token");
   return (
@@ -33,6 +34,7 @@ export const AppRouter = () => {
         <Route path="/admin/convocatoria" element={<Convocatoria />} />
         <Route path="/admin" element={<HomeAdmin />} />
         <Route path="/admin/elecc" element={<Page_elecc />} />
+        <Route path="/admin/mesas-jurados" element={<Page_Mesas_Jurados />} />
         <Route path="/admin/frente" element={<Page_Frente />} />
       </Routes>
     </Router>

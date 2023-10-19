@@ -22,7 +22,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/Save";
 import CancelIcon from "@mui/icons-material/Cancel";
-
+import GroupAddRoundedIcon from "@mui/icons-material/GroupAddRounded";
 function FormEleccion() {
   const [frente, setFrente] = useState("");
   const [candidatos, setCandidatos] = useState([]);
@@ -127,6 +127,7 @@ function FormEleccion() {
               setFormData({ ...formData, Facultad: e.target.value })
             }
             disabled
+            fullWidth
           />
         </Grid>
 
@@ -140,6 +141,7 @@ function FormEleccion() {
               setFormData({ ...formData, Carrera: e.target.value })
             }
             disabled
+            fullWidth
           />
         </Grid>
 
@@ -153,6 +155,7 @@ function FormEleccion() {
               setFormData({ ...formData, TipoEleccion: e.target.value })
             }
             disabled
+            fullWidth
           />
         </Grid>
 
@@ -166,6 +169,7 @@ function FormEleccion() {
               setFormData({ ...formData, TipoEleccion: e.target.value })
             }
             disabled
+            fullWidth
           />
         </Grid>
 
@@ -185,9 +189,14 @@ function FormEleccion() {
           </FormControl>
         </Grid>
 
-        <Grid item xs={6}>
-          <div>
-            <h2>Agregar Candidato</h2>
+        <Grid
+          container
+          spacing={2}
+          alignItems="center"
+          xs={12}
+          sx={{ margin: "10px" }}
+        >
+          <Grid item xs={9}>
             <FormControl fullWidth variant="outlined">
               <TextField
                 id="nombre-candidato"
@@ -197,7 +206,8 @@ function FormEleccion() {
                 onChange={handleNombreCandidatoChange}
               />
             </FormControl>
-
+          </Grid>
+          <Grid item xs={2}>
             <FormControl fullWidth variant="outlined">
               <InputLabel htmlFor="cargo-candidato">Cargo</InputLabel>
               <Select
@@ -211,15 +221,16 @@ function FormEleccion() {
                 <MenuItem value="Consejero">Consejero</MenuItem>
               </Select>
             </FormControl>
-
+          </Grid>
+          <Grid item xs={1}>
             <Button
               variant="contained"
               color="primary"
               onClick={handleAgregarCandidato}
             >
-              Agregar Candidato
+              <GroupAddRoundedIcon />
             </Button>
-          </div>
+          </Grid>
         </Grid>
 
         <Grid item xs={12}>

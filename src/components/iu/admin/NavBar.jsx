@@ -96,6 +96,12 @@ const NavBar = ({ open, mode }) => {
           icon={iconsList["Inicio"]}
           onClick={handleLinkClick}
         />
+        <CustomListItem
+          to="/admin/mesas-jurados"
+          text="Jurados-Mesas"
+          icon={iconsList["Inicio"]}
+          onClick={handleLinkClick}
+        />
         <Divider />
 
         <Divider />
